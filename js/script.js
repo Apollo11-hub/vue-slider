@@ -37,11 +37,49 @@ const app = new Vue({
         ],
         
         indexOfPhotoContainer : 0 ,
+
+        hover : false,
+        noHover : true
+
         
     },
     
     methods: {
+        photoSlideFw(){
+            this.indexOfPhotoContainer++;
+            if(this.indexOfPhotoContainer > this.photoContainer.length -1){
+                this.indexOfPhotoContainer = 0;
+            }
+            // console.log(this.indexOfPhotoContainer);
+        },
+        photoSlideBack(){
+            this.indexOfPhotoContainer--;
+            if(this.indexOfPhotoContainer < 0){
+                this.indexOfPhotoContainer = this.photoContainer.length -1;
+            }
+            // console.log(this.indexOfPhotoContainer);
+        },
+
+        cambiaImmagine(index){
+            this.indexOfPhotoContainer = index;
+        },
+
+        funcionForHover(){
+            this.hover = !this.hover
+            if(this.hover){
+                alert("stop")
+            }
+        }
+
 
     },
+
+    mounted(){
+    this.clearTimer = setInterval( () => {
+
+            this.photoSlideFw()
+            
+        }, 3000)
+    }
 })
 
