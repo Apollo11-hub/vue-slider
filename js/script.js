@@ -37,9 +37,8 @@ const app = new Vue({
         ],
         
         indexOfPhotoContainer : 0 ,
-
         hover : false,
-        noHover : true
+        noHover : false,
 
         
     },
@@ -64,10 +63,22 @@ const app = new Vue({
             this.indexOfPhotoContainer = index;
         },
 
-        funcionForHover(){
+        funcionForHover(index){
             this.hover = !this.hover
             if(this.hover){
-                alert("stop")
+                this.indexOfPhotoContainer = index;
+                clearInterval(this.settingInterval)
+
+
+            }
+        },
+
+        funcionForLeftHover(){
+            this.noHover = !this.noHover
+            if(this.noHover){
+                
+                //console.log(typeof(this.clearTimer))
+                console.log(this.noHover)
             }
         }
 
@@ -75,11 +86,14 @@ const app = new Vue({
     },
 
     mounted(){
-    this.clearTimer = setInterval( () => {
-
-            this.photoSlideFw()
-            
-        }, 3000)
+    
+    setInterval( () => {
+        
+        this.photoSlideFw()
+        
+        }, 1000)
     }
 })
+
+
 

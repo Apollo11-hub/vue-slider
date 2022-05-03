@@ -32,8 +32,8 @@
                         :class=" indexOfPhotoContainer == index ? 'active' : '' "
                         v-for=" (photo,index) in photoContainer"
                         @click ="cambiaImmagine(index)"
-                        @mouseleave =""
-                        @mouseover="funcionForHover()" 
+                        @mouseleave ="funcionForLeftHover()"
+                        @mouseover="funcionForHover(index)" 
                         >
                         
                         <img  :src="photo.image" :alt="photo.title"/>
